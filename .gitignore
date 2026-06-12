@@ -1,0 +1,18 @@
+# Arquivos de Notas Locais e Ativas (Segurança de Notas Pessoais)
+/segundo cerebro/
+/vault/
+
+# Credenciais e configurações locais sensíveis
+constellation.yaml
+*.json
+calendar_test_output.txt
+test.txt
+*.log
+
+# Caches e estados do Obsidian (dentro do template, caso criem lá)
+.obsidian/workspace
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+.trash/
+.DS_Store

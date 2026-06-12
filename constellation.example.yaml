@@ -1,0 +1,89 @@
+# constellation.example.yaml — Template de Configuração do Framework Segundo Cérebro
+# Renomeie este arquivo para 'constellation.yaml' para que seja lido pelo agente.
+
+meta:
+  framework_name: "Segundo Cérebro"
+  language: "pt-BR"
+  license: "MIT"
+  version: "6.0"
+  vault_root: "./vault"
+
+# Schema universal de frontmatter (Padrão para todas as notas)
+schema:
+  fields:
+    - name: data
+      type: date
+      format: "YYYY-MM-DD"
+    - name: fonte
+      type: string
+      description: "Link interno [[]], URL ou 'Original'"
+    - name: tipo
+      type: enum
+      values: [Atômica, MOC, Proxy, Project, Area, Inbox, Source]
+    - name: status
+      type: enum
+      values: [Rascunho, Estável, Permanente]
+    - name: tags
+      type: list
+
+# Política de Autonomia dos Agentes
+# Autônomo = Executa e commita no Git sem perguntar.
+# Requires Approval = Para e pede confirmação do PO.
+autonomy:
+  autonomous:
+    - create_note
+    - move_note
+    - inject_dialectic_block
+    - update_moc
+    - add_yaml_frontmatter
+    - git_commit
+    - save_raw_source
+  requires_approval:
+    - delete_note
+    - batch_edit_existing_notes
+    - notebooklm_research_start
+    - notebooklm_artifact_create
+    - overwrite_existing_content
+    - send_external_api_request
+
+# Registro de Conectividade (MCP Servers)
+mcp_servers:
+  # --- CONEXÕES ATIVAS ---
+  notebooklm:
+    package: "notebooklm-mcp-server"
+    status: active
+    notes: "Utilizado para Deep Research e geração de artefatos de áudio/mídia."
+
+  # --- CONFIGURAÇÃO PENDENTE (Insira suas chaves aqui) ---
+  notion:
+    package: "@modelcontextprotocol/server-notion"
+    status: pending
+    api_token: "SEU_NOTION_API_TOKEN_AQUI"
+    notes: "Necessário para o Agente Guardião sincronizar tarefas/hábitos."
+
+  google_cloud:
+    status: pending
+    project_id: "SEU_GOOGLE_CLOUD_PROJECT_ID_AQUI"
+    credentials_path: "./sua-credencial-google.json"
+    notes: "Necessário para acesso ao Calendar e Drive (Agente Project Tracker)."
+
+  zotero:
+    package: "zotero-mcp-server"
+    status: pending
+    api_key: "INSIRA_SUA_ZOTERO_KEY_AQUI"
+    user_id: "INSIRA_SEU_USER_ID_AQUI"
+    notes: "Necessário para o Agente Scholar pesquisar papers acadêmicos."
+
+# Tier de Agentes (Habilite/Desabilite conforme necessário)
+agents:
+  orchestrator: { enabled: true }
+  pulverizer: { enabled: true }
+  dialectical_curator: { enabled: true }
+  notebooklm_architect: { enabled: true }
+  web_scout: { enabled: true }
+  vault_inspector: { enabled: true }
+  media_factory: { enabled: true }
+  guardian: { enabled: true }
+  scholar_agent: { enabled: true }
+  project_tracker: { enabled: true }
+  cognitive_mirror: { enabled: true }
