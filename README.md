@@ -12,7 +12,7 @@ Este repositório é um *template*. Para iniciar o seu Segundo Cérebro do zero:
 
 1. **Clone o Repositório**:
    ```bash
-   git clone <url-deste-repo> meu-segundo-cerebro
+   git clone https://github.com/somosbantu-create/segundo_cerebro meu-segundo-cerebro
    cd meu-segundo-cerebro
    ```
 
